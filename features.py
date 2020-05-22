@@ -6,7 +6,7 @@ import random
 import json
 
 
-class InstagramBot:
+class Instagram:
     def __init__(self, username, password):
         self.username = username
         self.password = password
@@ -16,7 +16,7 @@ class InstagramBot:
     def login(self):
         driver = self.driver
         driver.get("https://www.instagram.com")
-        time.sleep(3)
+        time.sleep(5)
         try:
             login_button = driver.find_element_by_xpath(
                 "//a[@href='/accounts/login/?source=auth_switcher']"
@@ -41,7 +41,8 @@ class InstagramBot:
 
     def like_photos_and_follow_users_with_hashtag(self, hashtag, number_likes):
         driver = self.driver
-        driver.get("https://www.instagram.com/explore/tags/" + hashtag + "/")
+        time.sleep(2)
+        driver.get("https://www.instagram.com/explore/tags/" + hashtag + "/?hl=pt-br")
         time.sleep(2)
         # Rolar páginas
         for i in range(1, 2):
@@ -84,13 +85,19 @@ class InstagramBot:
             if i == number_likes:
                 break
             i += 1
-
-# Dados para autenticação e hashtags
-settings = open('setup.json').read()
-setup = json.loads(settings)
-
-# Entre com o usuário e senha aqui
-bot = InstagramBot(setup['username'], setup['password'])  
-bot.login()
-for hashtag in setup['hashtags']:
-    bot.like_photos_and_follow_users_with_hashtag(hashtag, random.randint(10, 20))  # Altere aqui para a hashtag que você deseja usar.
+    
+    def unfollow_user(self, user):        
+        driver = self.driver
+        time.sleep(2)
+        driver.get("https://www.instagram.com/" + user + "/?hl=pt-br")
+        time.sleep(4)
+        unfollow_buttons = driver.find_elements_by_xpath("/html/body/div[1]/section/main/div/header/section/div[1]/div[2]/span/span[1]/button")
+        for unfollow_button in unfollow_buttons:
+            unfollow_button.click()
+        time.sleep(random.randint(3, 6))
+        confirm_unfollow_user = driver.find_elements_by_xpath("/html/body/div[4]/div/div/div[3]/button[1]")
+        for confirm_unfollow in confirm_unfollow_user:
+            if confirm_unfollow.text == "Deixar de seguir":
+                confirm_unfollow.click()
+        time.sleep(random.randint(2, 5))
+        

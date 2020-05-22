@@ -1,3 +1,4 @@
-following.txt
+*.txt
 geckodriver.log
-setup.json
+*.json
+*.pyc
