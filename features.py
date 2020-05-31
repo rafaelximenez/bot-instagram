@@ -72,7 +72,7 @@ class Instagram:
                     driver.find_element_by_xpath(
                     '/html/body/div[1]/section/main/div/div[1]/article/header/div[2]/div[1]/div[2]/button').click()
                     # Gerar arquivo com usuários para unfollow
-                    open('following.txt', 'a').write(str(user.text) + '\n')
+                    open(str(self.username) + '.txt', 'a').write(str(user.text) + '\n')
                     time.sleep(random.randint(3, 5))
                 # Curtir a foto
                 driver.find_element_by_xpath(

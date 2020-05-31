@@ -8,12 +8,15 @@ if __name__ == "__main__":
     settings = open('setup.json').read()
     setup = json.loads(settings)
 
-    # Entre com o usuário e senha aqui
-    bot = Instagram(setup['username'], setup['password'])  
-    bot.login()
+    i = 0
+    for username in setup['username']:
+        # Entre com o usuário e senha aqui
+        bot = Instagram(setup['username'][i], setup['password'][i])  
+        bot.login()
 
-    # Ler usuários do arquivo
-    users = open('following.txt').read()
-    for user in users.split('\n'):
-        bot.unfollow_user(user)
+        # Ler usuários do arquivo
+        users = open(str(setup['username'][i]) + '.txt').read()
+        for user in users.split('\n'):
+            bot.unfollow_user(user)
+        i += 1
     
