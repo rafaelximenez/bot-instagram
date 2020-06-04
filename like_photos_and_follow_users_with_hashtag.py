@@ -15,4 +15,5 @@ if __name__ == "__main__":
         bot.login()
         for hashtag in setup['hashtags'][i]:
             bot.like_photos_and_follow_users_with_hashtag(hashtag, random.randint(10, 18))  # Altere aqui para a hashtag que você deseja usar.
+        bot.quit_driver()
         i += 1

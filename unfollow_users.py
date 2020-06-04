@@ -1,6 +1,7 @@
 #*-* coding: utf-8 *-*
 import random
 import json
+import os
 from features import Instagram
 
 if __name__ == "__main__":
@@ -18,5 +19,7 @@ if __name__ == "__main__":
         users = open(str(setup['username'][i]) + '.txt').read()
         for user in users.split('\n'):
             bot.unfollow_user(user)
-        i += 1
+        
+        bot.quit_driver()
+        i += 1        
     

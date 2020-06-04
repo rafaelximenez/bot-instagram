@@ -100,4 +100,8 @@ class Instagram:
             if confirm_unfollow.text == "Deixar de seguir":
                 confirm_unfollow.click()
         time.sleep(random.randint(2, 5))
+    
+    def quit_driver(self):
+        driver = self.driver
+        driver.quit()
         
