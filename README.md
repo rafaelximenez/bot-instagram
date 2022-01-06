@@ -1,6 +1,24 @@
-# Instruções
-1. Após ter feito o download dos arquivos vá até a pasta onde você fez o download e extraia o arquivo.
-2. Criar o arquivo setup.json
-3. Altere a *hashtag* de acordo com sua necessidade.
-4. Altere o nome do **usuário** e **senha**.
+# Bot Instagram
 
+[PT] Bot para operar o Instagram.<br>
+[EN] Bot to operate on Instagram.
+
+
+## Funcionalidades:
+    pass
+
+## Como usar:
+
+### Instalação
+```
+    pip install -r requirements.txt
+```
+
+### Configuração - config.py
+```
+    USERNAME = ''
+    PASSWORD = ''
+```
+
+### Links:
+[![Badge](https://img.shields.io/static/v1?label=Acesse&message=o%20site&color=yellowgreen)](https://github.com/strapbooll/bot-instagram)
